@@ -51,11 +51,11 @@ class Tenant(BaseModel):
     
 class TenantSettlement (BaseModel):
     name: str # imie najemcy
-    month: int # miesiąc
-    year: int # rok
+    month: str # miesiąc
+    year: str # rok
     payment_type: str # rodzaj rozliczenia
-    rent_pln: float # czynsz
-    bills_pln: float # rachunki
+    rent_eur: float # czynsz
+    bills_eur: float # rachunki
     transfer_total: float # suma przelewów
     balance: float # saldo
 
