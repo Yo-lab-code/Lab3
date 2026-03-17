@@ -32,7 +32,7 @@ class Apartment(BaseModel):
         return {key: Apartment(**apartment) for key, apartment in data.items()}
     
 class ApartmentSettlement(BaseModel):
-    name:             str
+    nazwa:             str
     location:         str
     rooms:            Dict[str, Room]
     month:            int
