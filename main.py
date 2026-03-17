@@ -7,24 +7,24 @@ import json
 
 class Parameters(BaseModel):
     apartments_json_path: str = 'data/apartments.json'
-    tenants_json_path: str = 'data/tenants.json'
-    transfers_json_path: str = 'data/transfers.json'
-    bills_json_path: str = 'data/bills.json'
+    tenants_json_path:    str = 'data/tenants.json'
+    transfers_json_path:  str = 'data/transfers.json'
+    bills_json_path:      str = 'data/bills.json'
 
 #---------------
 
 class Room(BaseModel):
-    name: str
+    name:    str
     area_m2: float
 
 #---------------
 
 class Apartment(BaseModel):
-    key: str
-    name: str
+    key:      str
+    name:     str
     location: str
-    area_m2: float
-    rooms: Dict[str, Room]
+    area_m2:  float
+    rooms:    Dict[str, Room]
 
     @staticmethod
     def from_json_file(file_path: str) -> Dict[str,'Apartment']:
@@ -37,7 +37,7 @@ class Apartment(BaseModel):
 #---------------
    
 class ApartmentSettlement(BaseModel):
-    nazwa:             str
+    nazwa:            str
     location:         str
     rooms:            Dict[str, Room]
     month:            int
@@ -49,13 +49,13 @@ class ApartmentSettlement(BaseModel):
 #---------------
   
 class Tenant(BaseModel):
-    name: str
-    apartment: str
-    room: str
-    rent_pln: float
-    deposit_pln: float
+    name:                str
+    apartment:           str
+    room:                str
+    rent_pln:            float
+    deposit_pln:         float
     date_agreement_from: str
-    date_agreement_to: str
+    date_agreement_to:   str
 
     @staticmethod
     def from_json_file(file_path: str) -> Dict[str,'Tenant']:
@@ -68,14 +68,14 @@ class Tenant(BaseModel):
 #---------------
 
 class TenantSettlement (BaseModel):
-    name: str 
-    month: str 
-    year: str 
-    payment_type: str 
-    rent_eur: float
-    bills_eur: float 
-    transfer_total: float 
-    balance: float
+    name:           str # imie najemcy
+    month:          str # miesiąc
+    year:           str # rok
+    payment_type:   str # rodzaj rozliczenia
+    rent_eur:       float # czynsz
+    bills_eur:      float # rachunki
+    transfer_total: float # suma przelewów
+    balance:        float # saldo
 
     @staticmethod
     def from_json_file(file_path: str) -> Dict[str,'Tenant']:
@@ -88,11 +88,11 @@ class TenantSettlement (BaseModel):
 #---------------
 
 class Transfer(BaseModel):
-    amount_pln: float
-    date: str
-    settlement_year: int | None
+    amount_pln:       float
+    date:             str
+    settlement_year:  int | None
     settlement_month: int | None
-    tenant: str
+    tenant:           str
 
     @staticmethod
     def from_json_file(file_path: str) -> List['Transfer']:
@@ -105,12 +105,12 @@ class Transfer(BaseModel):
 #---------------
 
 class Bill(BaseModel):
-    amount_pln: float
-    date_due: str
-    apartment: str
-    settlement_year: int
+    amount_pln:       float
+    date_due:         str
+    apartment:        str
+    settlement_year:  int
     settlement_month: int
-    type: str
+    type:             str
 
     @staticmethod
     def from_json_file(file_path: str) -> List['Bill']:
