@@ -30,7 +30,16 @@ class Apartment(BaseModel):
             data = json.load(file)
         assert isinstance(data, dict), "Expected a dictionary of apartments"
         return {key: Apartment(**apartment) for key, apartment in data.items()}
-
+    
+class ApartmentSettlement(BaseModel):
+    name:             str
+    location:         str
+    rooms:            Dict[str, Room]
+    month:            int
+    year:             int
+    sum_bills:        float
+    sum_rents:        float
+    unsettled_amount: float
     
 class Tenant(BaseModel):
     name: str
